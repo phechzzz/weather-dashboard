@@ -42,3 +42,7 @@ input{
     border-color: black;
     border: 2px;
 }
+
+#current-day{
+    background: linear-gradient(to right, #ff7e5f, #feb47b, #fff88d);
+}

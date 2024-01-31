@@ -9,25 +9,23 @@
 </head>
 <body>
 <h1>Weather Dashboard</h1>
-<main class="d-flex main">
-    <div class="col">
-        <form action="" class="form">
-            <input type="text" id="user-city"/>
-            <button type="submit" id="search-button" class="bg-gradient">Search</button>
-            <h2>Search for a city here</h2>
-            <div id="search-history">
-                <h3>Search History</h3>
-                <ul id="history-list"></ul>
-              </div>
-        </form>
-    </div>
-    <div class="col">
-        <section id="current-day" class="container ">
-            <h3 class="row">Current Weather</h3>
-        </section>
-    </div>
-        
-    
-</main>
-    <script src="assets/js/script.js"></script>
+<main class="d-flex">
+    <form action="" class="form d-flex flex-column">
+      <input type="text" id="user-city" class="mb-2">
+      <button type="submit" id="search-button" class="bg-gradient mb-3">Search</button>
+      <h2 class="mb-3">Search for a city here</h2>
+      <div id="search-history">
+        <h3>Search History</h3>
+        <ul id="history-list" class="list-group"></ul>
+      </div>
+    </form>
+
+    <section id="current-day" class="d-flex flex-column ms-3 flex-grow-1">
+      <h3 class="mb-3">Current Weather</h3>
+    </section>
+  </main>
+</div>
+
+<script src="assets/js/script.js"></script>
 </body>
+</html>

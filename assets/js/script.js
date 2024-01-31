@@ -4,31 +4,32 @@ searchButton.addEventListener('click', handleEvent);
 const historyList = document.getElementById('history-list');
 
 
-function renderWeather(data){
+function renderWeather(data) {
   const container = document.getElementById('current-day');
   container.innerHTML = '';
 
-  var tempContent = data.main.temp
-  var humidityContent = data.main.humidity
-  var windContent = data.wind.speed
-  var nameContent = data.name
+  var tempContent = data.main.temp;
+  var humidityContent = data.main.humidity;
+  var windContent = data.wind.speed;
+  var nameContent = data.name;
 
-  var tempEl = document.createElement('div')
-  var humidityEl = document.createElement('div')
-  var windEl = document.createElement('div')
-  var nameEl = document.createElement('h2')
+  var tempEl = document.createElement('div');
+  var humidityEl = document.createElement('div');
+  var windEl = document.createElement('div');
+  var nameEl = document.createElement('h2');
 
-  tempEl.textContent = 'The temperature is ' + tempContent + ' degrees'
-  humidityEl.textContent = 'Humidity: ' + humidityContent
-  windEl.textContent = 'Wind speed: ' + windContent
-  nameEl.textContent = nameContent
+  tempEl.textContent = 'The temperature is ' + tempContent + ' degrees';
+  humidityEl.textContent = 'Humidity: ' + humidityContent;
+  windEl.textContent = 'Wind speed: ' + windContent;
+  nameEl.textContent = nameContent;
 
-  
-  container.appendChild(nameEl)
-  container.appendChild(tempEl)
-  container.appendChild(humidityEl)
-  container.appendChild(windEl)
+  // Bootstrap styling classes
+  nameEl.className = 'display-1'; // Largest display size
 
+  container.appendChild(nameEl);
+  container.appendChild(tempEl);
+  container.appendChild(humidityEl);
+  container.appendChild(windEl);
 }
 
 
@@ -38,17 +39,20 @@ function renderSearchHistory(cities) {
 
   cities.forEach(city => {
     const listItem = document.createElement('li');
-    listItem.textContent = city;
-    historyList.appendChild(listItem);
+    listItem.className = 'list-group-item';
+    
+    const button = document.createElement('button');
+    button.className = 'btn btn-light';
+    button.textContent = city;
+    listItem.appendChild(button);
 
     // Attach click event to each history item
-    listItem.addEventListener('click', function () {
-      // Set the value of the search input to the clicked history item
-      searchForm.value = city;
-
-      // Trigger the search
-      handleEvent(new Event('click'));
+    button.addEventListener('click', function () {
+      // Fetch weather for the clicked city
+      fetchWeather(city);
     });
+
+    historyList.appendChild(listItem);
   });
 }
 
